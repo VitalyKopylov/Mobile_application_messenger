@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "250232065477",
+    "project_id": "messengervkr-485d8",
+    "storage_bucket": "messengervkr-485d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250232065477:android:3fefc60b56cb83f57d0fac",
+        "android_client_info": {
+          "package_name": "com.example.messenger_vkr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg9EcdklilwOu0H5lb43FWvVyPaVQWNQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

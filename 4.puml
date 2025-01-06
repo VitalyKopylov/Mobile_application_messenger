@@ -1,0 +1,262 @@
+@startuml
+class com.example.messenger_vkr.ChatActivity {
+- {static} String EXTRA_CURRENT_USER_ID
+- {static} String EXTRA_OTHER_USER_ID
+- TextView textViewTitle
+- View onlineStatus
+- RecyclerView recyclerViewMessages
+- EditText editTextMessage
+- ImageView imageViewSendMessage
+- MessagesAdapter messagesAdapter
+- String currentUserId
+- String otherUserId
+- ChatViewModel viewModel
+- ChatViewModelFactory viewModelFactory
+# void onCreate(Bundle)
+- void observeViewModel()
+- void initViews()
+# void onResume()
+# void onPause()
++ {static} Intent newIntent(Context,String,String)
+}
+
+
+class com.example.messenger_vkr.MessagesAdapter {
+- {static} int VIEW_TYPE_MY_MESSAGE
+- {static} int VIEW_TYPE_OTHER_MESSAGE
+- List<Message> messages
+- String currentUserId
++ <<Create>> MessagesAdapter(String)
++ void setMessages(List<Message>)
++ MessageViewHolder onCreateViewHolder(ViewGroup,int)
++ int getItemViewType(int)
++ void onBindViewHolder(MessageViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.messenger_vkr.MessagesAdapter$MessageViewHolder {
+- TextView textViewMessage
++ <<Create>> MessageViewHolder(View)
+}
+
+
+class com.example.messenger_vkr.LoginViewModel {
+- FirebaseAuth auth
+- MutableLiveData<String> error
+- MutableLiveData<FirebaseUser> user
++ <<Create>> LoginViewModel()
++ LiveData<String> getError()
++ LiveData<FirebaseUser> getUser()
++ void login(String,String)
+}
+
+
+class com.example.messenger_vkr.ResetPasswordActivity {
+- {static} String EXTRA_EMAIL
+- EditText editTextEmail
+- Button buttonResetPassword
+- ResetPasswordViewModel viewModel
+# void onCreate(Bundle)
++ void observeViewModel()
+- void initViews()
++ {static} Intent newIntent(Context,String)
+}
+
+
+class com.example.messenger_vkr.RegistrationActivity {
+- EditText editTextEmail
+- EditText editTextPassword
+- EditText editTextLastName
+- EditText editTextName
+- EditText editTextSurname
+- EditText editTextPosition
+- Button buttonSignUp
+- RegistrationViewModel viewModel
+# void onCreate(Bundle)
+- void observeViewModel()
+- void initViews()
+- String getTrimmedValue(EditText)
++ {static} Intent newIntent(Context)
+}
+
+
+class com.example.messenger_vkr.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class com.example.messenger_vkr.RegistrationViewModel {
+- FirebaseAuth auth
+- FirebaseDatabase firebaseDatabase
+- DatabaseReference usersReference
+- MutableLiveData<String> error
+- MutableLiveData<FirebaseUser> user
++ <<Create>> RegistrationViewModel()
++ LiveData<String> getError()
++ LiveData<FirebaseUser> getUser()
++ void signUp(String,String,String,String,String,String)
+}
+
+
+class com.example.messenger_vkr.UsersActivity {
+- {static} String EXTRA_CURRENT_USER_ID
+- RecyclerView recyclerViewUsers
+- UsersAdapter usersAdapter
+- UsersViewModel viewModel
+- String currentUserId
+# void onCreate(Bundle)
+- void initViews()
+- void observeViewModel()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+# void onResume()
+# void onPause()
++ {static} Intent newIntent(Context,String)
+}
+
+
+class com.example.messenger_vkr.ResetPasswordViewModel {
+- FirebaseAuth auth
+- MutableLiveData<String> error
+- MutableLiveData<Boolean> success
++ LiveData<String> getError()
++ LiveData<Boolean> isSuccess()
++ void resetPassword(String)
+}
+
+
+class com.example.messenger_vkr.UsersAdapter {
+- List<User> users
+- OnUserClickListener onUserClickListener
++ void setOnUserClickListener(OnUserClickListener)
++ void setUsers(List<User>)
++ UserViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(UserViewHolder,int)
++ int getItemCount()
+}
+
+
+interface com.example.messenger_vkr.UsersAdapter$OnUserClickListener {
+~ void onUserClick(User)
+}
+
+class com.example.messenger_vkr.UsersAdapter$UserViewHolder {
+- TextView textViewUserInfo
+- View onlineStatus
++ <<Create>> UserViewHolder(View)
+}
+
+
+class com.example.messenger_vkr.ChatViewModelFactory {
+- String currentUserId
+- String otherUserId
++ <<Create>> ChatViewModelFactory(String,String)
++ T create(Class<T>)
+}
+
+
+class com.example.messenger_vkr.ChatViewModel {
+- MutableLiveData<List<Message>> messages
+- MutableLiveData<User> otherUser
+- MutableLiveData<Boolean> messageSent
+- MutableLiveData<String> error
+- FirebaseDatabase firebaseDatabase
+- DatabaseReference referenceUsers
+- DatabaseReference referenceMessages
+- String currentUserId
+- String otherUserId
++ <<Create>> ChatViewModel(String,String)
++ LiveData<List<Message>> getMessages()
++ LiveData<User> getOtherUser()
++ LiveData<Boolean> getMessageSent()
++ MutableLiveData<String> getError()
++ void setUserOnline(boolean)
++ void sendMessage(Message)
+}
+
+
+class com.example.messenger_vkr.User {
+- String id
+- String lastname
+- String name
+- String surname
+- String position
+- boolean online
++ <<Create>> User(String,String,String,String,String,boolean)
++ <<Create>> User()
++ String getId()
++ String getLastname()
++ String getName()
++ String getSurname()
++ String getPosition()
++ boolean isOnline()
++ String toString()
+}
+
+
+class com.example.messenger_vkr.LoginActivity {
+- EditText editTextEmail
+- EditText editTextPassword
+- Button buttonLogin
+- TextView textViewForgotPassword
+- TextView textViewRegister
+- LoginViewModel viewModel
+# void onCreate(Bundle)
+- void setUpClickListeners()
+- void observeViewModel()
+- void initViews()
++ {static} Intent newIntent(Context)
+}
+
+
+class com.example.messenger_vkr.Message {
+- String text
+- String senderId
+- String receiverId
++ <<Create>> Message(String,String,String)
++ <<Create>> Message()
++ String getText()
++ String getSenderId()
++ String getReceiverId()
+}
+
+
+class com.example.messenger_vkr.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class com.example.messenger_vkr.UsersViewModel {
+- FirebaseAuth auth
+- FirebaseDatabase database
+- DatabaseReference usersReference
+- MutableLiveData<FirebaseUser> user
+- MutableLiveData<List<User>> users
++ <<Create>> UsersViewModel()
++ void setUserOnline(boolean)
++ LiveData<List<User>> getUsers()
++ LiveData<FirebaseUser> getUser()
++ void logout()
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.messenger_vkr.ChatActivity
+com.example.messenger_vkr.Adapter <|-- com.example.messenger_vkr.MessagesAdapter
+com.example.messenger_vkr.MessagesAdapter +.. com.example.messenger_vkr.MessagesAdapter$MessageViewHolder
+com.example.messenger_vkr.ViewHolder <|-- com.example.messenger_vkr.MessagesAdapter$MessageViewHolder
+androidx.lifecycle.ViewModel <|-- com.example.messenger_vkr.LoginViewModel
+androidx.appcompat.app.AppCompatActivity <|-- com.example.messenger_vkr.ResetPasswordActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.messenger_vkr.RegistrationActivity
+androidx.lifecycle.ViewModel <|-- com.example.messenger_vkr.RegistrationViewModel
+androidx.appcompat.app.AppCompatActivity <|-- com.example.messenger_vkr.UsersActivity
+androidx.lifecycle.ViewModel <|-- com.example.messenger_vkr.ResetPasswordViewModel
+com.example.messenger_vkr.Adapter <|-- com.example.messenger_vkr.UsersAdapter
+com.example.messenger_vkr.UsersAdapter +.. com.example.messenger_vkr.UsersAdapter$OnUserClickListener
+com.example.messenger_vkr.UsersAdapter +.. com.example.messenger_vkr.UsersAdapter$UserViewHolder
+com.example.messenger_vkr.ViewHolder <|-- com.example.messenger_vkr.UsersAdapter$UserViewHolder
+com.example.messenger_vkr.Factory <|.. com.example.messenger_vkr.ChatViewModelFactory
+androidx.lifecycle.ViewModel <|-- com.example.messenger_vkr.ChatViewModel
+androidx.appcompat.app.AppCompatActivity <|-- com.example.messenger_vkr.LoginActivity
+androidx.lifecycle.ViewModel <|-- com.example.messenger_vkr.UsersViewModel
+@enduml
