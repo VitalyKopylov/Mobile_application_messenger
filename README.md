@@ -23,5 +23,14 @@
 ### Среда разработки
 - **Android Studio**
   - Интегрированная среда разработки для Android-приложений.
+ 
+![презентация на защиту Копылов - 0001](https://github.com/user-attachments/assets/866e147c-93b9-4e9c-9f6a-04692679fbf3)
+![презентация на защиту Копылов - 0002](https://github.com/user-attachments/assets/eef00d63-ff6f-451d-9693-7705c54218d0)
+![презентация на защиту Копылов - 0003](https://github.com/user-attachments/assets/6771ef9f-828a-423f-bf67-e60e37351b77)
+![презентация на защиту Копылов - 0004](https://github.com/user-attachments/assets/7365f971-1d3f-46f2-983e-38ec19706bb5)
+![презентация на защиту Копылов - 0005](https://github.com/user-attachments/assets/03351a81-b3a3-4ca4-a889-d61a2d90e0f6)
+
+
+
 
 
